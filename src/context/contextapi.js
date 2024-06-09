@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { fetchDataFromApi } from "../utils/api.js";
 
-export const context = createContext();
+export const Context = createContext();
 
 export const AppContext = (props) => {
     const [loading, setLoading] = useState(false);
@@ -15,15 +15,15 @@ export const AppContext = (props) => {
 
     const fetchSelectedCategoryData = (query) => {
         setLoading(true);
-        fetchDataFromApi(`search/?q=${query}`).then((res) => {
-            console.log(res);
-            // setSelectCategories(res)
+        fetchDataFromApi(`search/?q=${query}`).then((contents) => {
+            console.log(contents);
+             setSelectCategories(contents)
             setLoading(false);
         });
     };
 
     return (
-        <context.Provider value={{
+        <Context.Provider value={{
             loading,
             setLoading,
             searchResults,
@@ -34,7 +34,7 @@ export const AppContext = (props) => {
             setMobileMenu,
         }}>
             {props.children}
-        </context.Provider>
+        </Context.Provider>
     );
 };
 
