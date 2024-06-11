@@ -1,4 +1,5 @@
 import axios from "axios";
+import { data } from "../data";
 
 const BASE_URL='https://youtube138.p.rapidapi.com';
 const options = {
@@ -15,6 +16,6 @@ const options = {
   };
 
   export const fetchDataFromApi = async (url) => {
-    const {data} = await axios.get(`${BASE_URL}/${url}`, options)
+    // const {data} = await axios.get(`${BASE_URL}/${url}`, options)
     return data;
   }
